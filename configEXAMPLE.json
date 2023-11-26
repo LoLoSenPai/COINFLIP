@@ -1,0 +1,7 @@
+{
+    "token": "discord_token",
+    "clientId": "discord_bot_client_id",
+    "guildId": "your_discord_guild_id",
+    "mongoURI": "mongodb://localhost:27017/your_database_name"
+  }
+  
