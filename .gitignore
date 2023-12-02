@@ -1,7 +1,0 @@
-.env
-node_modules
-package-lock.json
-config.json
-styles.css
-test-crypt.js
-secretkey.js
