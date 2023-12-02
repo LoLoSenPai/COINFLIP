@@ -1,6 +1,6 @@
 const solanaWeb3 = require('@solana/web3.js');
 const bs58 = require('bs58');
-const { decrypt } = require('./encryptionUtils');
+// const { decrypt } = require('./encryptionUtils');
 
 const treasuryWalletPublicKey = process.env.TREASURY_WALLET_PUBLIC_KEY;
 const treasuryWalletPrivateKey = process.env.TREASURY_WALLET_PRIVATE_KEY;
