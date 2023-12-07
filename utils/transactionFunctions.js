@@ -1,10 +1,23 @@
 const solanaWeb3 = require('@solana/web3.js');
 const bs58 = require('bs58');
-// const { decrypt } = require('./encryptionUtils');
 
 const treasuryWalletPublicKey = process.env.TREASURY_WALLET_PUBLIC_KEY;
 const treasuryWalletPrivateKey = process.env.TREASURY_WALLET_PRIVATE_KEY;
 const Solana = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'));
+
+let cachedBlockhash = null;
+let lastBlockhashTime = 0;
+const BLOCKHASH_CACHE_TIME = 30 * 1000; // 30 seconds cache time
+
+async function getBlockhash() {
+    const currentTime = new Date().getTime();
+    if (!cachedBlockhash || currentTime - lastBlockhashTime > BLOCKHASH_CACHE_TIME) {
+        const { blockhash } = await Solana.getLatestBlockhash();
+        cachedBlockhash = blockhash;
+        lastBlockhashTime = currentTime;
+    }
+    return cachedBlockhash;
+}
 
 // Function for sending a transaction to the winner's wallet
 async function sendTransactionToWinner(winnerWalletAddress, amount) {
@@ -19,8 +32,7 @@ async function sendTransactionToWinner(winnerWalletAddress, amount) {
         })
     );
 
-    const { blockhash } = await Solana.getLatestBlockhash();
-    transaction.recentBlockhash = blockhash;
+    transaction.recentBlockhash = await getBlockhash();
 
     transaction.sign(treasuryKeypair);
 
@@ -41,8 +53,7 @@ async function sendTransactionToTreasury(decryptedPrivateKeyBuffer, amount) {
         })
     );
 
-    const { blockhash } = await Solana.getLatestBlockhash();
-    transaction.recentBlockhash = blockhash;
+    transaction.recentBlockhash = await getBlockhash();
 
     transaction.sign(userKeypair);
 
