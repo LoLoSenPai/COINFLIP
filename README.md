@@ -10,11 +10,12 @@ This "Coinflip" Discord bot lets users flip a coin using the SOL (Solana) crypto
 - **Coinflip Game**: Enter `/coinflip` to start a game.
 - **Main wallet**: Configure a default withdrawal wallet with `/main-wallet`.
 - **Withdraw funds**: Use `/withdraw` and choose `true` to send funds to the registered wallet, or `new_wallet` to specify a new wallet.
+- **Export wallet**: Export your private key with `/export-wallet`.
 
 ## How to play
 
 1. **Register**: Create your portfolio with `/register`.
-2. **Deposit SOLs**: Send SOLs to your wallet via devnet.
+2. **Deposit SOLs**: Send SOLs to your wallet.
 3. **Balance update**: Confirm deposit with `/notify-deposit`.
 4. **Play**: Start a game with `/coinflip`.
 5. **Withdraw**: Withdraw your winnings with `/withdraw`.
