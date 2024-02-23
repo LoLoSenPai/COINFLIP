@@ -14,7 +14,7 @@ This "Coinflip" Discord bot lets users flip a coin using the SOL (Solana) crypto
 
 ## How to play
 
-1. **Register**: Create your portfolio with `/register`.
+1. **Register**: Create your wallet with `/register`.
 2. **Deposit SOLs**: Send SOLs to your wallet.
 3. **Balance update**: Confirm deposit with `/notify-deposit`.
 4. **Play**: Start a game with `/coinflip`.
